@@ -23,13 +23,13 @@ export class Register extends Component {
       <div className='col-md-6 m-auto'>
         <div className='card card-body mt-5'>
           <h2 className='text-center'>Register</h2>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={this.onSubmit}>
             <div className='form-group'>
               <label>Username</label>
               <input
                 type='text'
                 value={username}
-                onChange={onChange}
+                onChange={this.onChange}
                 name='username'
                 className='form-control'
               />
@@ -39,7 +39,7 @@ export class Register extends Component {
               <input
                 type='email'
                 value={email}
-                onChange={onChange}
+                onChange={this.onChange}
                 name='email'
                 className='form-control'
               />
@@ -49,7 +49,7 @@ export class Register extends Component {
               <input
                 type='password'
                 value={password}
-                onChange={onChange}
+                onChange={this.onChange}
                 name='password'
                 className='form-control'
               />
@@ -59,7 +59,7 @@ export class Register extends Component {
               <input
                 type='password'
                 value={password2}
-                onChange={onChange}
+                onChange={this.onChange}
                 name='password2'
                 className='form-control'
               />
