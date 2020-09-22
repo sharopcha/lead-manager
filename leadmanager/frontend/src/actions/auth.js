@@ -7,6 +7,8 @@ import {
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
+  REGISTER_SUCCESS,
+  REGISTER_FAIL,
 } from './types';
 
 // check token and load user
@@ -56,6 +58,34 @@ export const login = (username, password) => (dispatch) => {
       dispatch(returnErrors(err.response.data, err.response.status));
       dispatch({
         type: LOGIN_FAIL,
+      });
+    });
+};
+
+// register User
+export const register = ({ username, password, email }) => (dispatch) => {
+  // Headers
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  // Request body
+  const body = JSON.stringify({ username, password, email });
+
+  axios
+    .post('/api/auth/register', body, config)
+    .then((res) => {
+      dispatch({
+        type: REGISTER_SUCCESS,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch(returnErrors(err.response.data, err.response.status));
+      dispatch({
+        type: REGISTER_FAIL,
       });
     });
 };
